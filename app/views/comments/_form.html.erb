@@ -1,0 +1,7 @@
+<div style="width: 100%">
+  <form class="d-flex" action="<%= post_comments_path(post) %>" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <textarea name="comment[comment]" class="form-control ml-1 shadow-none textarea"></textarea>
+    <input type="submit" value="Submit" class="btn btn-primary btn-lg">
+  </form>
+</div>

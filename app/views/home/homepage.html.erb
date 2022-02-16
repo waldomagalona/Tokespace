@@ -1,0 +1,28 @@
+<body class="bg-dark text-white">
+<% if user_signed_in? %>
+    <body id="page-top justify-content-center">
+        <header class="masthead d-flex align-middle align-items-center">
+            <div class="container mt-5 px-10 px-lg-10 text-center">
+                <div class="mt-5">
+                    <h1 class="mb-1 mt-5">Tokespace</h1>
+                    <br>
+                    <h3 class="mb-5"><em>Welcome to Tokespace! A social media app for crypto and blockchain enthusiasts!</em></h3>
+                </div>
+            </div>
+        </header>
+    </body>    
+<%else%>
+    <body id="page-top justify-content-center">
+        <header class="masthead d-flex align-middle align-items-center">
+            <div class="container mt-5 px-10 px-lg-10 text-center">
+                <div class="mt-5">
+                    <h1 class="mb-1 mt-5">Tokespace</h1>
+                    <br>
+                    <h3 class="mb-5"><em>Welcome to Tokespace! A social media app for crypto and blockchain enthusiasts!</em></h3>
+                    <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary btn-lg' %>
+                </div>
+            </div>
+        </header>
+    </body>
+<%end%>
+</body>

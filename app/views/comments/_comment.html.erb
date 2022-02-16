@@ -1,0 +1,12 @@
+<% if comment.comment? %>
+    <div class="card" style="width: 100%;">
+    <div class="card-body">
+        <h5 class="card-title h3"><%= comment.user.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted h4">@<%= comment.user.username %></h6>
+        <p class="card-text h1"><%= comment.comment %></p>
+        <% if comment.user.id == current_user.id %>
+            <%= link_to 'Delete comment', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mx-1" %>
+        <% end %>
+    </div>
+    </div>
+<% end %>

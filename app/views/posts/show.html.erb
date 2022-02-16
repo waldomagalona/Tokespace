@@ -1,0 +1,40 @@
+<body class="bg-dark" style='scrollbar-color: dark;'>
+  <div class="container-fluid row d-flex justify-content-center">
+    <div class="container">
+      <div class="col d-flex justify-content-center">
+          <div style="width: 100%;">
+              <div class="container mt-5 mb-5">
+                  <div class="d-flex justify-content-center row">
+                      <div class="d-flex flex-column col-md-8">
+                        <%= link_to 'Back', posts_path %>
+                          <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
+                              <div class="profile-image"><img class="rounded-circle" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" width="70"></div>
+                              <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1"><i class="fa fa-sort-up fa-2x hit-voting"></i><i class="fa fa-sort-down fa-2x hit-voting"></i></div>
+                              <div class="d-flex flex-column ml-3">
+                      
+                                  <div class="d-flex flex-row post-title">
+                                      <h3><%= @post.description %></h3><span class="ml-2"></span>
+                                  </div>
+                                  <div class="d-flex flex-row align-items-center align-content-center post-title"><span class="mr-2 comments px-3">(<%= @post.comments.count %>)comments&nbsp;</span><span class="mr-2 dot"></span><span class="px-4"><%= @post.created_at %></span></div>
+                                  <% if user_signed_in? && @post.user_id == current_user.id %>
+                                    <%= link_to 'Edit Post', edit_post_path(@post) %>
+                                  <% end %>
+                              </div>
+                          </div>
+                          <div class="comment-bottom bg-white p-2 px-4">
+                              <div class="profile-image d-flex col">
+                                <div class="d-flex row">
+                                <span class= "px-2 h4">Commenting as: @<%= current_user.username %></span>
+                                <%= render partial: 'comments/form', locals: {post: @post} %></div>
+                                </div>
+                              </div>
+                              <%= render @post.comments %>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>

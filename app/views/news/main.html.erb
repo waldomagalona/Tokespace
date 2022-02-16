@@ -1,0 +1,62 @@
+
+<%# scrollbar styling %>
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+    width: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #888; 
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+    }
+</style>
+
+<body class="bg-dark" style='scrollbar-color: dark;'>
+    <div class="container-fluid row d-flex justify-content-center">
+        <h1 class="text-center text-white">Latest Crypto and Blockchain news</h1>
+        <br>
+        <br>
+        <br>
+            <div class="container">
+                <div class="col d-flex justify-content-center">
+                    <div style="max-height: 800px; overflow-y: auto;  scrollbar-width: thin; scrollbar-color: black gray;">
+                        <% @headlines['results'].each do |headline|%>
+                            <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= headline['title'] %></h5>
+                                <p class="card-text">Published at <%= headline['published_at'].tr("T Z", " ") %>UTC</p>
+                                <a href="<%= headline['url']%>" target ="_blank" class="btn btn-secondary">Click here for more information</a>
+                            </div>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="d-inline-block position-sticky" style="max-height: 800px; overflow-y: auto; scrollbar-color: dark;">
+                        <% @updates.each do |updates|%>
+                        <div class="card bg-dark" style="width: 18rem;">
+                            <div class="card-body text-muted">
+                                <h5 class="card-title text-white"><%= updates['symbol'].upcase %></h5>
+                                <h6 class="card-subtitle mb-2 text-light">Current Price: $<%= updates['current_price'] %></h6>
+                                <% if updates['price_change_percentage_24h'] > 0%>
+                                    Last 24hrs:<p class="card-text text-success"> <%= updates['price_change_percentage_24h'] %>%</p>
+                                <% elsif updates['price_change_percentage_24h'] < 0 %>
+                                    Last 24hrs:<p class="card-text text-danger"> <%= updates['price_change_percentage_24h'] %>%</p>
+                                <%end%>
+                            </div> 
+                        </div>
+                        <%end%> 
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>

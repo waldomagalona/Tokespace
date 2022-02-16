@@ -1,0 +1,14 @@
+<%= simple_form_for(@post) do |f| %>
+  <div class="d-flex row justify-content-center text-white h3">
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="d-flex row form-inputs justify-content-center">
+      <%= f.input :description, label: 'Post',placeholder: 'Post Something' %>
+    </div>
+
+    <div class="d-flex form-actions mb-5 justify-content-center">
+      <%= f.button :submit, class:'btn btn-primary btn-lg' %>
+    </div>
+  </div>
+<% end %>

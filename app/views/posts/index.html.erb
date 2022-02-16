@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+<body class="bg-dark" style='scrollbar-color: dark;'>
+<div class="d-flex justify-content-center">
+  <div class="container d-flex row justify-content-center px-5">
+      <div class="d-flex col justify-content-between">
+      <div class="card p-3" style="max-height: 18rem;">
+          <div class="d-flex align-items-center">
+              <div class="image"> <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" class="rounded-circle" width="155"> </div>
+              <div class="ml-3 w-100">
+                  <h4 class="mb-0 mt-0 h3"><%= current_user.name %></h4> <span class="h3">@<%= current_user.username %></span>
+                  <div>
+                  </div>
+                  <div class="button mt-2 d-flex flex-row align-items-center">
+                    <%= link_to 'View My Profile', user_path(current_user), class:"btn btn-sm btn-primary w-100 ml-2"%>
+                  </div>
+              </div>
+          </div>
+      </div>    
+        <div class ="align-self-center w-75 px-5">
+            <%= render 'form', post: @post %>
+              <% @posts.each do |post| %>
+                <div class="card text-center">
+                  <div class="card-header h5">
+                    <%= link_to post.user.username, user_path(post.user), class:"text-dark"%>
+                  </div>
+                  <div class="card-body">
+                    <h2 class="card-title"><%= post.description %></h2>
+                    <div class="d-flex col justify-content-center">
+                    <%= link_to "View Comments", post, class: "btn btn-secondary mx-1" %>
+                      <% if post.user_id == current_user.id %>
+                        <%= link_to 'Edit', edit_post_path(post), class: "btn btn-secondary mx-1" %>
+                        <%= link_to 'Delete Post', post,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mx-1" %>
+                      <% end %>
+                    </div>        
+                  </div>
+                  <div class="card-footer text-muted">
+                    <%= post.created_at%>    
+                  </div>
+                </div>
+                <hr/>
+              <% end %>
+        </div>
+          <div class="justify-content-center">
+            <h3 class='text-white text-center'>Get to know more people!</h3>
+              <% @user_follow.each do |user|%>
+                  <% if user.id != current_user.id %>
+                    <div class="card p-3" style="max-height: 18rem;">
+                        <div class="d-flex align-items-center">
+                            <div class="image"> <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" class="rounded-circle" width="155"> </div>
+                            <div class="ml-3 w-100">
+                                <h4 class="mb-0 mt-0"><%= user.name %></h4> <span><%= user.username %></span>
+                                <div>
+                                </div>
+                                <div class="button mt-2 d-flex flex-row align-items-center">
+                                  <%= link_to 'View Profile', user_path(user), class:"btn btn-sm btn-primary w-100 ml-2"%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%end%>
+              <%end%>
+            </div>
+    </div>
+  </div>
+  </div>
+</body>
+
