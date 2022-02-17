@@ -126,8 +126,6 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
-    faraday_middleware (1.2.0)
-      faraday (~> 1.0)
     ffi (1.15.5)
     formatador (1.1.0)
     globalid (1.0.0)
@@ -147,15 +145,9 @@ GEM
       guard (~> 2.8)
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
-    hashie (5.0.0)
     http_parser.rb (0.8.0)
     i18n (1.9.1)
       concurrent-ruby (~> 1.0)
-    iex-ruby-client (1.6.0)
-      faraday (>= 0.17)
-      faraday_middleware
-      hashie
-      money (~> 6.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -177,8 +169,6 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
-    money (6.16.0)
-      i18n (>= 0.6.4, <= 2)
     msgpack (1.4.4)
     multi_json (1.15.0)
     multipart-post (2.1.1)
@@ -331,7 +321,6 @@ DEPENDENCIES
   faraday
   guard (~> 2.18)
   guard-livereload (~> 2.5, >= 2.5.2)
-  iex-ruby-client
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
