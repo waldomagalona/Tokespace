@@ -120,8 +120,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: "tokespace.herokuapp.com" }
   config.action_mailer.smtp_settings = {
-    user_name: Rails.application.credentials.sendmail[:email],
-    password: Rails.application.credentials.sendmail[:password],
+    user_name: Rails.application.credentials.gmail[:email],
+    password: Rails.application.credentials.gmail[:password],
     domain: 'gmail.com',
     address: 'smtp.gmail.com',
     port: '587',
